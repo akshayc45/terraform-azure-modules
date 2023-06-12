@@ -1,3 +1,15 @@
+variable "apg_subnet_name"{
+  type = string
+  default = null
+}
+variable "apg_vnet_name"{
+  type = string
+  default = null
+}
+variable "apg_rg_name"{
+  type = string
+  default = null
+}
 #---------------------------------------------------------#
 #-------------------WAF POLICY-------------------#
 #---------------------------------------------------------#
@@ -597,17 +609,6 @@ variable "backend_pool_association" {
   type        = any
   default     = {}
   description = "The Name of the IP Configuration within the Network Interface which should be connected to the Backend Address Pool. Changing this forces a new resource to be created."
-}
-
-
-#-----------------------
-#---- NSG---------------
-#-----------------------
-
-variable "nsgrule" {
-  type = any
-  default = {}
-  description = "Network security group"
 }
 
 

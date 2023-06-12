@@ -302,15 +302,15 @@ resource "azurerm_monitor_autoscale_setting" "this" {
 
           statistic        = rule.value.statistic#var.scaleout_statistic
           time_aggregation = rule.value.time_aggregation#var.scaleout_time_aggregation
-          time_grain       = try(rule.value.time_aggregation, "PT1M") # PT1M means: Period of Time 1 Minute
-          time_window      = rule.value.time_window
+          time_grain       = try("PT${rule.value.time_grain}", "PT1M") # PT1M means: Period of Time 1 Minute
+          time_window      = "PT${rule.value.time_window}"
         }
 
         scale_action {
           direction = rule.value.direction
           value     = rule.value.scale_value
           type      = rule.value.scale_type
-          cooldown  = rule.value.cooldown_time
+          cooldown  = "PT${rule.value.cooldown_time}"
         }
       }
     }

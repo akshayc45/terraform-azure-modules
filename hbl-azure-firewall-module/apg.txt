@@ -554,9 +554,10 @@ resource "azurerm_application_gateway" "main" {
     }
   }
 
-  # lifecycle {
-  #   ignore_changes = [
-  #     tags,
-  #   ]
-  # }
+  lifecycle {
+    ignore_changes = [
+      tags,
+    ]
+  }
 }
+
